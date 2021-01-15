@@ -2,6 +2,14 @@ import NextAuth from 'next-auth';
 import Providers from 'next-auth/providers';
 import Adapters from "next-auth/adapters";
 
+declare global {
+  namespace NodeJS {
+    interface Global {
+      prisma: any;
+    }
+  }
+}
+
 import { PrismaClient } from "@prisma/client";
 
 let prisma;
