@@ -5,6 +5,7 @@ import {
   signOut,
   useSession
 } from 'next-auth/client'
+import Registration from '../components/registration';
 
 export default function Home() {
   const [session, loading] = useSession();
@@ -13,8 +14,6 @@ export default function Home() {
       <Head>
         <title>Mint App</title>
         <link rel="icon" href="/favicon.ico" />
-        <link rel="preconnect" href="https://fonts.gstatic.com"/>
-        <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
       </Head>
       {!session && <>
         Not signed in <br/>
@@ -23,6 +22,7 @@ export default function Home() {
       {session && <>
         Signed in as {session.user.email} <br/>
         <button onClick={() => {signOut()}}>Sign out</button>
+        <Registration/>
       </>}
 
       <span>Mint Registration</span>
@@ -38,10 +38,10 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: green;
-  font-family: 'EB Garamond';
-  font-weight: 400;
-  font-size: 40px;
+  color: blue;
+  /* font-family: 'EB Garamond'; */
+  /* font-weight: 400; */
+  /* font-size: 40px; */
 `;
 
 // const Wrapper = styled.div`
