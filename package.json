@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "migrate:prod": "DATABASE_URL=postgresql://mintyfolk:letmein123@database-mint.crz657wk64vg.us-east-2.rds.amazonaws.com/mintcontainer npx prisma migrate deploy --preview-feature",
+    "migrate:dev": "npx prisma migrate dev --preview-feature"
   },
   "dependencies": {
     "@prisma/client": "^2.14.0",
