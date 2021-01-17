@@ -18,23 +18,22 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {loading || !session && <LoginWrapper>
-        {/* LOADING */}
-        {loading && <CircularSpinner/>}
+      {/* LOADING */}
+      {loading && <CircularSpinner/>}
 
-        {/* LOGGED OUT */}
-        {!loading && !session && <>
-          <LoginPanel>
-            <div>
-              <CenteredHeader>DeMentha 2021</CenteredHeader>
-              <p>🍃 Minty 🍃 oasis of mojitos 🍹, music 🎧 and mayhem at Burning Man.</p>
-              <p>Let's go back to Burning Man this year :).</p>
-            </div>
-            <LoginButtonDiv>
-              <Button onClick={() => {signIn()}}>Login / Register</Button>
-            </LoginButtonDiv>
-          </LoginPanel>
-        </>}
+      {/* LOGGED OUT */}
+      {!loading && !session &&
+      <LoginWrapper>
+        <LoginPanel>
+          <div>
+            <CenteredHeader>DeMentha 2021</CenteredHeader>
+            <p>🍃 Minty 🍃 oasis of mojitos 🍹, music 🎧 and mayhem at Burning Man.</p>
+            <p>Let's go back to Burning Man this year :).</p>
+          </div>
+          <LoginButtonDiv>
+            <Button onClick={() => {signIn()}}>Login / Register</Button>
+          </LoginButtonDiv>
+        </LoginPanel>
       </LoginWrapper>}
 
       {/* LOGGED IN */}
