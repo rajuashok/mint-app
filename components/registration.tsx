@@ -1,7 +1,8 @@
 import React from 'react';
-import { Field, Form } from 'react-final-form';
+import { Form } from 'react-final-form';
 import formatString from 'format-string-by-pattern'
 import styled from 'styled-components';
+import { Field, Label } from './form';
 
 interface Props {
 
@@ -29,28 +30,32 @@ const Registration: React.FC<Props> = () => {
                 onSubmit={() => {}}
                 render={({ handleSubmit }) => (
                     <form onSubmit={handleSubmit}>
+                        <Row>
+                            <Input>
+                                <Label>Default Name</Label>
+                                <Field name="defaultName" component="input" placeholder="Spyro Karidis" />
+                            </Input>
+                            <Input>
+                                <Label>Playa Name</Label>
+                                <Field name="playaName" component="input" placeholder="Scrub Nut" />
+                            </Input>
+                        </Row>
+                        <Row>
+                            <Input>
+                                <Label>Phone Number</Label>
+                                <Field name="phone" component="input" parse={normalizePhone} placeholder="(555) 555-5555" />
+                            </Input>
+                        </Row>
                         <div>
-                            <label>Default Name</label>
-                            <Field name="defaultName" component="input" placeholder="John Doe" />
-                        </div>
-                        <div>
-                            <label>Playa Name</label>
-                            <Field name="playaName" component="input" placeholder="Scrub Nut" />
-                        </div>
-                        <div>
-                            <label>Phone Number</label>
-                            <Field name="phone" component="input" parse={normalizePhone} placeholder="(555) 555-5555" />
-                        </div>
-                        <div>
-                            <label>Early Arrival?</label>
+                            <Label>Early Arrival?</Label>
                             <Field name="earlyArrive" component="input" type="checkbox" />
                         </div>
                         <div>
-                            <label>Vehicle Pass?</label>
+                            <Label>Vehicle Pass?</Label>
                             <Field name="vehiclePass" component="input" type="checkbox" />
                         </div>
                         <div>
-                            <label>Still Need Ticket?</label>
+                            <Label>Still Need Ticket?</Label>
                             <Field name="needTicket" component="input" type="checkbox" />
                         </div>
                     </form>
@@ -64,5 +69,16 @@ export default Registration;
 const Wrapper = styled.div`
     width: 70vw;
     padding: 10px;
-    /* background-color: red; */
+`;
+
+const Row = styled.div`
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+`;
+
+const Input = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin-right: 12px;
 `;
