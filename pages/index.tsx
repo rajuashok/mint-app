@@ -42,15 +42,15 @@ export default function Home() {
 
       {/* LOGGED IN */}
       {session &&
-        <SignedInWrapper>
-          <AccountHeader>
-            <div>
-              {session.user.email} (<LinkButton onClick={() => signOut()}>Sign Out</LinkButton>)
-              {/* <UnstyledButton onClick={() => signOut()}>Sign Out</UnstyledButton> */}
-            </div>
-          </AccountHeader>
-          <Registration/>
-        </SignedInWrapper>}
+        <>
+        <AccountHeader>
+          <div>
+            {session.user.email} (<LinkButton onClick={() => signOut()}>Sign Out</LinkButton>)
+            {/* <UnstyledButton onClick={() => signOut()}>Sign Out</UnstyledButton> */}
+          </div>
+        </AccountHeader>
+        <Registration/>
+      </>}
 
     </Container>
   )
@@ -70,14 +70,6 @@ const LoginWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-`;
-
-const SignedInWrapper = styled.div`
-  min-height: 95vh;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 `;
 
 const LoginPanel = styled.div`
@@ -105,6 +97,8 @@ const LoginButtonDiv = styled.div`
   justify-content: center;
 `;
 
+// Signed In
+
 const AccountHeader = styled.div`
   width: 100vw;
   padding: 8px 12px;
@@ -115,3 +109,11 @@ const AccountHeader = styled.div`
   box-sizing: border-box;
   font-size: 14px;
 `;
+
+// const SignedInWrapper = styled.div`
+//   min-height: 95vh;
+//   width: 100%;
+//   /* display: flex; */
+//   /* flex-direction: column; */
+//   /* align-items: center; */
+// `;

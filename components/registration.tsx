@@ -3,6 +3,7 @@ import { Form } from 'react-final-form';
 import formatString from 'format-string-by-pattern'
 import styled from 'styled-components';
 import { Field, Label } from './form';
+import { DefaultButton } from './button';
 
 interface Props {
 
@@ -26,7 +27,7 @@ const Registration: React.FC<Props> = () => {
     return (
         <Wrapper>
             <Container>
-            <h2>Sign up for DeMentha 2021</h2>
+            <h1>Sign up for DeMentha 2021</h1>
             <Form
                 onSubmit={() => {}}
                 render={({ handleSubmit }) => (
@@ -34,11 +35,11 @@ const Registration: React.FC<Props> = () => {
                         <Row>
                             <Input>
                                 <Label>Default Name</Label>
-                                <Field name="defaultName" component="input" placeholder="Spyro Karidis" />
+                                <Field name="defaultName" component="input" placeholder="John Doe" />
                             </Input>
                             <Input>
                                 <Label>Playa Name</Label>
-                                <Field name="playaName" component="input" placeholder="Scrub Nut" />
+                                <Field name="playaName" component="input" placeholder="Jesus Christ" />
                             </Input>
                         </Row>
                         <Row>
@@ -47,18 +48,21 @@ const Registration: React.FC<Props> = () => {
                                 <Field name="phone" component="input" parse={normalizePhone} placeholder="(555) 555-5555" />
                             </Input>
                         </Row>
-                        <div>
+                        <Row>
                             <Label>Early Arrival?</Label>
                             <Field name="earlyArrive" component="input" type="checkbox" />
-                        </div>
-                        <div>
+                        </Row>
+                        <Row>
                             <Label>Vehicle Pass?</Label>
                             <Field name="vehiclePass" component="input" type="checkbox" />
-                        </div>
-                        <div>
+                        </Row>
+                        <Row>
                             <Label>Still Need Ticket?</Label>
                             <Field name="needTicket" component="input" type="checkbox" />
-                        </div>
+                        </Row>
+                        <SubmitDiv>
+                            <DefaultButton type="submit">Submit</DefaultButton>
+                        </SubmitDiv>
                     </form>
                 )}/>
             </Container>
@@ -76,21 +80,31 @@ const Wrapper = styled.div`
 `;
 
 const Container = styled.div`
-    width: 60%;
+    width: 40%;
+    min-height: 92vh;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    background-color: gray;
+    padding: 10px 40px;
+    /* align-items: center; */
+    border-right: 1px solid #EBEBEB;
+    border-left: 1px solid #EBEBEB;
 `;
 
 const Row = styled.div`
     margin-bottom: 20px;
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
 `;
 
 const Input = styled.div`
     display: flex;
     flex-direction: column;
     margin-right: 12px;
+`;
+
+const SubmitDiv = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
 `;
