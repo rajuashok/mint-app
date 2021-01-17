@@ -10,8 +10,10 @@
     "migrate:dev": "npx prisma migrate dev --preview-feature"
   },
   "dependencies": {
+    "@material-ui/core": "^4.11.2",
     "@prisma/client": "^2.14.0",
     "final-form": "^4.20.1",
+    "fontsource-roboto": "^4.0.0",
     "format-string-by-pattern": "^1.2.1",
     "mongodb": "^3.6.3",
     "next": "9.5.5",

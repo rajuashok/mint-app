@@ -1,7 +1,8 @@
 import App from 'next/app'
 import { ThemeProvider } from 'styled-components'
+import 'fontsource-roboto';
 
-const theme = {}
+const theme = {};
 
 export default class MyApp extends App {
     render() {

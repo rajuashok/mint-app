@@ -6,6 +6,7 @@ import {
   useSession
 } from 'next-auth/client'
 import Registration from '../components/registration';
+import Button from "@material-ui/core/Button";
 
 export default function Home() {
   const [session, loading] = useSession();
@@ -16,16 +17,22 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {!session && <>
-        Not signed in <br/>
-        <button onClick={() => {signIn()}}>Sign in</button>
+        <LoginPanel>
+          <div>
+            <CenteredHeader>DeMentha 2021</CenteredHeader>
+            <p>🍃 Minty 🍃 oasis of mojitos 🍹, music 🎧 and mayhem at Burning Man.</p>
+            <p>Let's go back to Burning Man this year :).</p>
+          </div>
+          <LoginButtonDiv>
+            <Button onClick={() => {signIn()}}>Login / Register</Button>
+          </LoginButtonDiv>
+        </LoginPanel>
       </>}
       {session && <>
         Signed in as {session.user.email} <br/>
-        <button onClick={() => {signOut()}}>Sign out</button>
+        <Button onClick={() => {signOut()}}>Sign out</Button>
         <Registration/>
       </>}
-
-      <span>Mint Registration</span>
 
     </Container>
   )
@@ -33,15 +40,38 @@ export default function Home() {
 
 const Container = styled.div`
   min-height: 100vh;
-  padding: 0 0.5rem;
+  max-width: 100vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: blue;
-  /* font-family: 'EB Garamond'; */
-  /* font-weight: 400; */
-  /* font-size: 40px; */
+  font-family: Roboto;
+`;
+
+const LoginPanel = styled.div`
+  width: 375px;
+  height: 320px;
+  border: 2px solid #EBEBEB;
+  box-sizing: border-box;
+  border-radius: 15px;
+  padding: 30px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const CenteredHeader = styled.h1`
+  text-align: center;
+  width: 100%;
+`;
+
+const LoginButtonDiv = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
 `;
 
 // const Wrapper = styled.div`
