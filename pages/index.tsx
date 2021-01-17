@@ -19,7 +19,10 @@ export default function Home() {
       </Head>
 
       {/* LOADING */}
-      {loading && <CircularSpinner/>}
+      {!loading && 
+      <LoginWrapper>
+        <CircularSpinner/>
+      </LoginWrapper>}
 
       {/* LOGGED OUT */}
       {!loading && !session &&
