@@ -25,6 +25,7 @@ const normalizePhone = value => {
 const Registration: React.FC<Props> = () => {
     return (
         <Wrapper>
+            <Container>
             <h2>Sign up for DeMentha 2021</h2>
             <Form
                 onSubmit={() => {}}
@@ -60,6 +61,7 @@ const Registration: React.FC<Props> = () => {
                         </div>
                     </form>
                 )}/>
+            </Container>
         </Wrapper>
     );
 }
@@ -67,8 +69,18 @@ const Registration: React.FC<Props> = () => {
 export default Registration;
 
 const Wrapper = styled.div`
-    width: 70vw;
-    padding: 10px;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`;
+
+const Container = styled.div`
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: gray;
 `;
 
 const Row = styled.div`

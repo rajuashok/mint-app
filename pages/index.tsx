@@ -6,8 +6,9 @@ import {
   useSession
 } from 'next-auth/client'
 import Registration from '../components/registration';
-import Button from '../components/button';
+import { DefaultButton as Button, FullWidthButton, LinkButton } from '../components/button';
 import { CircularSpinner } from '../components/progress';
+import { Link } from '@material-ui/core';
 
 export default function Home() {
   const [session, loading] = useSession();
@@ -34,7 +35,7 @@ export default function Home() {
             <p>Let's go back to Burning Man this year :).</p>
           </div>
           <LoginButtonDiv>
-            <Button onClick={() => {signIn()}}>Login / Register</Button>
+            <FullWidthButton onClick={() => {signIn()}}>Login / Register</FullWidthButton>
           </LoginButtonDiv>
         </LoginPanel>
       </LoginWrapper>}
@@ -42,13 +43,19 @@ export default function Home() {
       {/* LOGGED IN */}
       {session &&
         <SignedInWrapper>
-          <Button onClick={() => {signOut()}}>Sign out</Button>
+          <AccountHeader>
+            <div>
+              {session.user.email} (<LinkButton onClick={() => signOut()}>Sign Out</LinkButton>)
+              {/* <UnstyledButton onClick={() => signOut()}>Sign Out</UnstyledButton> */}
+            </div>
+          </AccountHeader>
           <Registration/>
         </SignedInWrapper>}
 
     </Container>
   )
 }
+
 
 const Container = styled.div`
   min-height: 95vh;
@@ -96,4 +103,15 @@ const LoginButtonDiv = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
+`;
+
+const AccountHeader = styled.div`
+  width: 100vw;
+  padding: 8px 12px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  border-bottom: 1px solid #EBEBEB;
+  box-sizing: border-box;
+  font-size: 14px;
 `;

@@ -2,15 +2,24 @@ import React from 'react';
 import styled from 'styled-components';
 import Button from '@material-ui/core/Button';
 
-const StyledButton = styled(Button)`
+export const DefaultButton = styled(Button)`
     && {
-        width: 100%;
         background-color: #BADDBA;
-        padding: 10px 14px;
+        padding: 4px 8px;
         &:hover {
             background-color: #79C979;
         }
     }
 `;
 
-export default StyledButton;
+export const FullWidthButton = styled(DefaultButton)`
+    && {
+        width: 100%;
+    }
+`;
+
+export const LinkButton = styled.span`
+  cursor: pointer;
+  color: #79C979;
+  text-decoration: underline;
+`;
