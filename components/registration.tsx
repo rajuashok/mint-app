@@ -1,6 +1,7 @@
 import React from 'react';
 import { Field, Form } from 'react-final-form';
 import formatString from 'format-string-by-pattern'
+import styled from 'styled-components';
 
 interface Props {
 
@@ -22,7 +23,8 @@ const normalizePhone = value => {
 
 const Registration: React.FC<Props> = () => {
     return (
-        <div>
+        <Wrapper>
+            <h2>Sign up for DeMentha 2021</h2>
             <Form
                 onSubmit={() => {}}
                 render={({ handleSubmit }) => (
@@ -53,8 +55,14 @@ const Registration: React.FC<Props> = () => {
                         </div>
                     </form>
                 )}/>
-        </div>
+        </Wrapper>
     );
 }
 
 export default Registration;
+
+const Wrapper = styled.div`
+    width: 70vw;
+    padding: 10px;
+    /* background-color: red; */
+`;

@@ -6,7 +6,8 @@ import {
   useSession
 } from 'next-auth/client'
 import Registration from '../components/registration';
-import Button from "@material-ui/core/Button";
+import Button from '../components/button';
+import { CircularSpinner } from '../components/progress';
 
 export default function Home() {
   const [session, loading] = useSession();
@@ -16,36 +17,58 @@ export default function Home() {
         <title>Mint App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {!session && <>
-        <LoginPanel>
-          <div>
-            <CenteredHeader>DeMentha 2021</CenteredHeader>
-            <p>🍃 Minty 🍃 oasis of mojitos 🍹, music 🎧 and mayhem at Burning Man.</p>
-            <p>Let's go back to Burning Man this year :).</p>
-          </div>
-          <LoginButtonDiv>
-            <Button onClick={() => {signIn()}}>Login / Register</Button>
-          </LoginButtonDiv>
-        </LoginPanel>
-      </>}
-      {session && <>
-        Signed in as {session.user.email} <br/>
-        <Button onClick={() => {signOut()}}>Sign out</Button>
-        <Registration/>
-      </>}
+
+      {loading || !session && <LoginWrapper>
+        {/* LOADING */}
+        {loading && <CircularSpinner/>}
+
+        {/* LOGGED OUT */}
+        {!loading && !session && <>
+          <LoginPanel>
+            <div>
+              <CenteredHeader>DeMentha 2021</CenteredHeader>
+              <p>🍃 Minty 🍃 oasis of mojitos 🍹, music 🎧 and mayhem at Burning Man.</p>
+              <p>Let's go back to Burning Man this year :).</p>
+            </div>
+            <LoginButtonDiv>
+              <Button onClick={() => {signIn()}}>Login / Register</Button>
+            </LoginButtonDiv>
+          </LoginPanel>
+        </>}
+      </LoginWrapper>}
+
+      {/* LOGGED IN */}
+      {session &&
+        <SignedInWrapper>
+          <Button onClick={() => {signOut()}}>Sign out</Button>
+          <Registration/>
+        </SignedInWrapper>}
 
     </Container>
   )
 }
 
 const Container = styled.div`
-  min-height: 100vh;
+  min-height: 95vh;
   max-width: 100vw;
+  font-family: Roboto;
+`;
+
+const LoginWrapper = styled.div`
+  min-height: 95vh;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  font-family: Roboto;
+  justify-content: center;
+`;
+
+const SignedInWrapper = styled.div`
+  min-height: 95vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const LoginPanel = styled.div`
@@ -71,15 +94,4 @@ const LoginButtonDiv = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-bottom: 20px;
 `;
-
-// const Wrapper = styled.div`
-//   @font-face {
-//     font-family: 'LeagueSpartan';
-//     font-style: normal;
-//     font-weight: 400;
-//     font-display: swap;
-//     src: local('LeagueSpartan-Bold'), url(/fonts/LeagueSpartan-Bold.otf) format('otf');
-//   }
-// `;
