@@ -19,7 +19,7 @@ export default function Home() {
       </Head>
 
       {/* LOADING */}
-      {!loading && 
+      {loading && 
       <LoginWrapper>
         <CircularSpinner/>
       </LoginWrapper>}
