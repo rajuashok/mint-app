@@ -37,12 +37,7 @@ const options = {
       from: process.env.EMAIL_FROM
     }),
   ],
-  // Optional SQL or MongoDB database to persist users
-  // database: process.env.DATABASE_URL
-  adapter: Adapters.Prisma.Adapter({
-    prisma,
-  }),
-  secret: process.env.SECRET
+  database: process.env.DATABASE_URL,
 }
 
 export default (req, res) => NextAuth(req, res, options);
