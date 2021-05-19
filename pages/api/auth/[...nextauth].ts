@@ -38,6 +38,9 @@ const options = {
     }),
   ],
   database: process.env.DATABASE_URL,
+  // pages: {
+  //   signIn: '/auth/email-signin'
+  // }
 }
 
 export default (req, res) => NextAuth(req, res, options);
