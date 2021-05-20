@@ -6,39 +6,36 @@ import {
   useSession
 } from 'next-auth/client'
 import Registration from '../components/registration';
-import { DefaultButton as Button, FullWidthButton, LinkButton } from '../components/button';
+import { FullWidthButton, LinkButton } from '../components/button';
 import { CircularSpinner } from '../components/progress';
 import { Link } from '@material-ui/core';
+import { Flex, Heading, Text } from '@chakra-ui/layout';
+import { Spinner } from '@chakra-ui/spinner';
+import { Button } from '@chakra-ui/button';
 
 export default function Home() {
   const [session, loading] = useSession();
   return (
-    <Container>
+    <Flex height="100vh" align="center" justifyContent="center">
       <Head>
-        <title>Mint App</title>
+        <title>DeMentha Family</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       {/* LOADING */}
-      {loading && 
-      <LoginWrapper>
-        <CircularSpinner/>
-      </LoginWrapper>}
+      {loading &&
+        <Spinner color="brand.600" size="xl" thickness="5px"/>
+      }
 
       {/* LOGGED OUT */}
       {!loading && !session &&
-      <LoginWrapper>
-        <LoginPanel>
-          <div>
-            <CenteredHeader>DeMentha 2021</CenteredHeader>
-            <p>🍃 Minty 🍃 oasis of mojitos 🍹, music 🎧 and mayhem at Burning Man.</p>
-            <p>Let's go back to Burning Man this year :).</p>
-          </div>
-          <LoginButtonDiv>
-            <FullWidthButton onClick={() => {signIn()}}>Login / Register</FullWidthButton>
-          </LoginButtonDiv>
-        </LoginPanel>
-      </LoginWrapper>}
+        <Flex maxW="500px" m={6} direction="column" background="gray.100" p={[4, 6, 12]} rounded={6}>
+          <Heading align="center" mb={6}>DeMentha Registration</Heading>
+          <Text align="center" mb={3}>🍃 Minty 🍃 oasis of mojitos 🍹, music 🎧 and mayhem at Burning Man.</Text>
+          <Text align="center" mb={6}>Let's go back to Burning Man in 2022 :).</Text>
+          <Button colorScheme="brand">Log in / Register</Button>
+        </Flex>
+      }
 
       {/* LOGGED IN */}
       {session &&
@@ -52,7 +49,7 @@ export default function Home() {
         <Registration/>
       </>}
 
-    </Container>
+    </Flex>
   )
 }
 
