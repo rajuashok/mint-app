@@ -33,7 +33,7 @@ export default function Home() {
           <Heading align="center" mb={6}>DeMentha Registration</Heading>
           <Text align="center" mb={3}>🍃 Minty 🍃 oasis of mojitos 🍹, music 🎧 and mayhem at Burning Man.</Text>
           <Text align="center" mb={6}>Let's go back to Burning Man in 2022 :).</Text>
-          <Button colorScheme="brand">Log in / Register</Button>
+          <Button colorScheme="brand" onClick={() => {signIn()}}>Log in / Register</Button>
         </Flex>
       }
 
